@@ -2,58 +2,84 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Code, Trophy, Users } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 const HeroBanner = () => {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-hero-gradient"></div>
+      
+      {/* Floating Particles */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-neon-green rounded-full opacity-30"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [-20, 20, -20],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Hero Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-16">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-orbitron font-black mb-4">
-            <span className="hero-text">Solve & Level Up</span>
+          <h1 className="text-6xl md:text-8xl font-orbitron font-black mb-6">
+            <span className="hero-text">EXPLORE</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Master coding challenges, practice algorithms, and prepare for technical interviews
+          <h2 className="text-2xl md:text-4xl font-orbitron font-bold mb-4">
+            <span className="hero-text">SOLVE & LEVEL UP</span>
+          </h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Dive into the neon-powered coding universe. Master algorithms, conquer challenges, 
+            and become the developer you've always dreamed of being.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <Button className="btn-primary text-lg px-8 py-3 group">
-            Start Solving
+          <Button 
+            className="btn-primary animate-glow-pulse text-lg px-8 py-4 group"
+            size="lg"
+          >
+            Start a Challenge
             <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button variant="outline" className="border-neon-green/30 text-neon-green hover:bg-neon-green/10 text-lg px-8 py-3">
-            View Problems
           </Button>
         </motion.div>
 
         {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-3 gap-8 max-w-lg mx-auto"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
           {[
-            { icon: Users, label: "Developers", value: "50K+" },
-            { icon: Code, label: "Problems", value: "2.5K+" },
-            { icon: Trophy, label: "Companies", value: "100+" }
+            { label: "Active Coders", value: "50K+" },
+            { label: "Challenges", value: "2.5K+" },
+            { label: "Companies", value: "100+" }
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="flex justify-center mb-2">
-                <stat.icon className="w-6 h-6 text-neon-green" />
-              </div>
-              <div className="text-2xl font-orbitron font-bold text-neon-green mb-1">
+              <div className="text-3xl font-orbitron font-bold text-neon-green mb-2">
                 {stat.value}
               </div>
               <div className="text-sm text-muted-foreground">{stat.label}</div>
