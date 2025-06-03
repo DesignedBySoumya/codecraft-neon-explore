@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,7 +10,7 @@
 
   body {
     @apply bg-background text-foreground font-inter;
-    background: #0D0D0D;
+    background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 50%, #0D0D0D 100%);
   }
 
   /* Custom scrollbar */
@@ -35,7 +36,7 @@
 @layer components {
   .neon-border {
     border: 1px solid rgba(0, 255, 163, 0.3);
-    box-shadow: 0 0 10px rgba(0, 255, 163, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 163, 0.2);
   }
 
   .neon-glow {
@@ -43,21 +44,21 @@
   }
 
   .neon-glow:hover {
-    box-shadow: 0 0 20px rgba(0, 255, 163, 0.5);
+    box-shadow: 0 0 30px rgba(0, 255, 163, 0.6);
     border-color: rgba(0, 255, 163, 0.8);
     transform: scale(1.02);
   }
 
   .topic-card {
     @apply bg-card border border-border rounded-xl p-6 cursor-pointer transition-all duration-300;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(26, 26, 26, 0.4) 100%);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0.6) 100%);
+    backdrop-filter: blur(16px);
   }
 
   .challenge-card {
     @apply bg-card border border-border rounded-lg p-4 cursor-pointer transition-all duration-300;
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0.5) 100%);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
     position: relative;
     overflow: hidden;
   }
@@ -70,7 +71,7 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(0, 255, 163, 0.1), transparent);
-    transition: left 0.5s;
+    transition: left 0.6s ease;
   }
 
   .challenge-card:hover::before {
@@ -79,12 +80,12 @@
 
   .challenge-card:hover {
     @apply shadow-card-hover border-neon-green/50;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
   }
 
   .glass-card {
     background: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -93,24 +94,29 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 40px rgba(0, 255, 163, 0.3);
   }
 
   .btn-primary {
     @apply bg-neon-gradient text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300;
-    box-shadow: 0 4px 15px rgba(0, 255, 163, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 255, 163, 0.4);
+    position: relative;
   }
 
   .btn-primary:hover {
     @apply shadow-neon-strong;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 255, 163, 0.6);
   }
 
   .progress-bar {
-    @apply w-full h-2 bg-secondary rounded-full overflow-hidden;
+    @apply w-full h-2 bg-secondary/60 rounded-full overflow-hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .progress-fill {
     @apply h-full bg-neon-gradient rounded-full transition-all duration-1000 ease-out;
+    box-shadow: 0 0 10px rgba(0, 255, 163, 0.5);
   }
 
   .difficulty-easy {
@@ -172,24 +178,25 @@
     opacity: 1;
   }
 
-  /* Spline 3D responsive adjustments */
+  /* Enhanced Spline 3D responsive adjustments */
   @media (max-width: 768px) {
     .spline-container {
-      transform: scale(0.8);
-      opacity: 0.4;
+      transform: scale(0.7);
+      opacity: 0.5;
     }
   }
 
   @media (max-width: 480px) {
     .spline-container {
-      display: none;
+      transform: scale(0.5);
+      opacity: 0.3;
     }
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px currentColor;
+    text-shadow: 0 0 20px currentColor;
   }
 
   .scrollbar-hide {
@@ -216,15 +223,28 @@
   }
 
   .animate-glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
+    animation: glow-pulse 3s ease-in-out infinite;
   }
 
   @keyframes glow-pulse {
     0%, 100% {
-      box-shadow: 0 0 20px rgba(0, 255, 163, 0.5);
+      box-shadow: 0 0 20px rgba(0, 255, 163, 0.4);
     }
     50% {
-      box-shadow: 0 0 30px rgba(0, 255, 163, 0.8);
+      box-shadow: 0 0 40px rgba(0, 255, 163, 0.8);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
     }
   }
 }
