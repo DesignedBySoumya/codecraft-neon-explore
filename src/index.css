@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -177,28 +178,55 @@
     opacity: 1;
   }
 
-  /* Enhanced Spline 3D responsive adjustments */
+  /* Enhanced Spline 3D responsive and visual optimizations */
   .spline-container {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    will-change: transform, filter, opacity;
   }
 
-  @media (max-width: 768px) {
+  /* Desktop - Full experience */
+  @media (min-width: 1024px) {
     .spline-container {
-      opacity: 0.3 !important;
-      filter: brightness(0.8) saturate(0.8) !important;
+      filter: brightness(1.2) contrast(1.1) saturate(1.2) !important;
+      opacity: 0.95 !important;
     }
   }
 
-  @media (max-width: 480px) {
+  /* Tablet - Reduced intensity */
+  @media (max-width: 1023px) and (min-width: 769px) {
     .spline-container {
-      opacity: 0.1 !important;
-      filter: brightness(0.5) saturate(0.5) !important;
+      opacity: 0.7 !important;
+      filter: brightness(1.1) saturate(1.0) !important;
+    }
+  }
+
+  /* Mobile - Minimal for performance */
+  @media (max-width: 768px) {
+    .spline-container {
+      opacity: 0.25 !important;
+      filter: brightness(0.9) saturate(0.8) blur(1px) !important;
       pointer-events: none !important;
     }
   }
 
-  /* Performance optimization for mobile */
-  @media (max-width: 480px) and (prefers-reduced-motion: reduce) {
+  /* Small mobile - Hidden or fallback */
+  @media (max-width: 480px) {
+    .spline-container {
+      opacity: 0.1 !important;
+      filter: brightness(0.5) saturate(0.5) blur(2px) !important;
+      pointer-events: none !important;
+    }
+  }
+
+  /* Performance optimization for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .spline-container {
+      display: none !important;
+    }
+  }
+
+  /* Low-end device optimization */
+  @media (max-width: 480px) and (max-height: 667px) {
     .spline-container {
       display: none !important;
     }

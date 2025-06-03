@@ -8,55 +8,62 @@ import Spline from '@splinetool/react-spline';
 const HeroBanner = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-background/80">
-      {/* Enhanced Spline 3D Background - Full Screen with Interactivity */}
-      <div className="absolute inset-0 z-0">
+      {/* Enhanced Fullscreen Spline 3D Background - Centered & Interactive */}
+      <div className="absolute inset-0">
         <Spline
           scene="https://prod.spline.design/Kw60oEZZK6nIYdUc/scene.splinecode"
           style={{
             position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100vw',
+            height: '100vh',
+            zIndex: -1,
             pointerEvents: 'auto',
-            filter: 'brightness(1.2) saturate(1.1)',
-            opacity: 0.9,
+            filter: 'brightness(1.2) contrast(1.1) saturate(1.2)',
+            opacity: 0.95,
           }}
           className="spline-container"
         />
         
-        {/* Enhanced overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30 pointer-events-none"></div>
+        {/* Sophisticated overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent pointer-events-none z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/25 via-transparent to-background/25 pointer-events-none z-0"></div>
+        
+        {/* Subtle blur overlay behind text areas */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-96 pointer-events-none z-0">
+          <div className="w-full h-full bg-white/[0.02] backdrop-blur-[2px] rounded-3xl"></div>
+        </div>
       </div>
 
-      {/* Animated particles for extra visual appeal */}
+      {/* Enhanced animated particles for extra visual appeal */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => (
+        {Array.from({ length: 25 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-neon-green rounded-full opacity-40"
+            className="absolute w-1 h-1 bg-neon-green rounded-full opacity-30"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [-30, 30, -30],
-              x: [-10, 10, -10],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [0.5, 1.2, 0.5],
+              y: [-40, 40, -40],
+              x: [-15, 15, -15],
+              opacity: [0.1, 0.6, 0.1],
+              scale: [0.3, 1.5, 0.3],
             }}
             transition={{
-              duration: 4 + Math.random() * 3,
+              duration: 5 + Math.random() * 4,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: Math.random() * 3,
               ease: "easeInOut",
             }}
           />
         ))}
       </div>
 
-      {/* Hero Content */}
+      {/* Hero Content with enhanced z-index */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-6 pointer-events-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
