@@ -8,21 +8,30 @@ import Spline from '@splinetool/react-spline';
 const HeroBanner = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-background/80">
-      {/* Spline 3D Background */}
+      {/* Enhanced Spline 3D Background - Full Screen with Interactivity */}
       <div className="absolute inset-0 z-0">
-        <div className="relative w-full h-full flex items-center justify-center">
-          <Spline
-            scene="https://prod.spline.design/Kw60oEZZK6nIYdUc/scene.splinecode"
-            className="w-full h-full object-cover scale-110 opacity-70"
-          />
-        </div>
+        <Spline
+          scene="https://prod.spline.design/Kw60oEZZK6nIYdUc/scene.splinecode"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'auto',
+            filter: 'brightness(1.2) saturate(1.1)',
+            opacity: 0.9,
+          }}
+          className="spline-container"
+        />
+        
         {/* Enhanced overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30 pointer-events-none"></div>
       </div>
 
       {/* Animated particles for extra visual appeal */}
-      <div className="absolute inset-0 z-[1]">
+      <div className="absolute inset-0 z-[1] pointer-events-none">
         {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
@@ -48,7 +57,7 @@ const HeroBanner = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
+      <div className="relative z-10 text-center max-w-6xl mx-auto px-6 pointer-events-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -154,7 +163,7 @@ const HeroBanner = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 pointer-events-auto"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
