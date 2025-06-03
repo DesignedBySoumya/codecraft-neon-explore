@@ -8,41 +8,34 @@ import Spline from '@splinetool/react-spline';
 const HeroBanner = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-background/80">
-      {/* Enhanced Fullscreen Spline 3D Background - More Subtle */}
-      <div className="absolute inset-0">
+      {/* Enhanced Spline 3D Background - Full Screen with Interactivity */}
+      <div className="absolute inset-0 z-0">
         <Spline
           scene="https://prod.spline.design/Kw60oEZZK6nIYdUc/scene.splinecode"
           style={{
             position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '120vw',
-            height: '120vh',
-            zIndex: -1,
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
             pointerEvents: 'auto',
-            filter: 'brightness(0.8) contrast(0.9) saturate(0.8)',
-            opacity: 0.4,
+            filter: 'brightness(1.2) saturate(1.1)',
+            opacity: 0.9,
           }}
           className="spline-container"
         />
         
         {/* Enhanced overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-background/60 pointer-events-none z-0"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/40 via-transparent to-background/40 pointer-events-none z-0"></div>
-        
-        {/* Focused blur overlay behind main content area */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-[600px] pointer-events-none z-0">
-          <div className="w-full h-full bg-background/20 backdrop-blur-sm rounded-3xl"></div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30 pointer-events-none"></div>
       </div>
 
-      {/* Enhanced animated particles for extra visual appeal */}
+      {/* Animated particles for extra visual appeal */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {Array.from({ length: 15 }).map((_, i) => (
+        {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-neon-green rounded-full opacity-20"
+            className="absolute w-1 h-1 bg-neon-green rounded-full opacity-40"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -50,7 +43,7 @@ const HeroBanner = () => {
             animate={{
               y: [-30, 30, -30],
               x: [-10, 10, -10],
-              opacity: [0.1, 0.4, 0.1],
+              opacity: [0.2, 0.8, 0.2],
               scale: [0.5, 1.2, 0.5],
             }}
             transition={{
@@ -63,20 +56,19 @@ const HeroBanner = () => {
         ))}
       </div>
 
-      {/* Hero Content with enhanced visibility */}
+      {/* Hero Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-6 pointer-events-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative"
         >
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-neon-green/20 border border-neon-green/40 rounded-full px-4 py-2 mb-8 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 rounded-full px-4 py-2 mb-8"
           >
             <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
             <span className="text-neon-green text-sm font-medium">Join 50K+ Active Coders</span>
@@ -84,8 +76,8 @@ const HeroBanner = () => {
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-orbitron font-black mb-6 leading-tight">
-            <span className="hero-text block drop-shadow-lg">MASTER</span>
-            <span className="hero-text block bg-gradient-to-r from-neon-green via-neon-blue to-neon-green bg-clip-text text-transparent drop-shadow-lg">
+            <span className="hero-text block">MASTER</span>
+            <span className="hero-text block bg-gradient-to-r from-neon-green via-neon-blue to-neon-green bg-clip-text text-transparent">
               ALGORITHMS
             </span>
           </h1>
@@ -95,7 +87,7 @@ const HeroBanner = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
+            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
           >
             Dive into the <span className="text-neon-green font-semibold">neon-powered</span> coding universe. 
             Solve challenges, level up your skills, and join the elite.
@@ -109,7 +101,7 @@ const HeroBanner = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
             <Button 
-              className="btn-primary text-lg px-8 py-4 group relative overflow-hidden backdrop-blur-sm"
+              className="btn-primary text-lg px-8 py-4 group relative overflow-hidden"
               size="lg"
             >
               <motion.div
@@ -126,7 +118,7 @@ const HeroBanner = () => {
 
             <Button 
               variant="outline"
-              className="text-lg px-8 py-4 border-neon-green/30 hover:bg-neon-green/10 group backdrop-blur-sm"
+              className="text-lg px-8 py-4 border-neon-green/30 hover:bg-neon-green/10 group"
               size="lg"
             >
               <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -148,7 +140,7 @@ const HeroBanner = () => {
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                className="glass-card p-6 rounded-xl text-center group hover:scale-105 transition-transform duration-300 backdrop-blur-md border border-white/10"
+                className="glass-card p-6 rounded-xl text-center group hover:scale-105 transition-transform duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
@@ -179,7 +171,7 @@ const HeroBanner = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-neon-green/50 rounded-full flex justify-center backdrop-blur-sm"
+          className="w-6 h-10 border-2 border-neon-green/50 rounded-full flex justify-center"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
