@@ -178,42 +178,42 @@
     opacity: 1;
   }
 
-  /* Enhanced Spline 3D responsive and visual optimizations */
+  /* Enhanced Spline 3D responsive and visual optimizations - More Subtle */
   .spline-container {
     transition: all 0.4s ease;
     will-change: transform, filter, opacity;
   }
 
-  /* Desktop - Full experience */
+  /* Desktop - Reduced intensity for better readability */
   @media (min-width: 1024px) {
     .spline-container {
-      filter: brightness(1.2) contrast(1.1) saturate(1.2) !important;
-      opacity: 0.95 !important;
+      filter: brightness(0.8) contrast(0.9) saturate(0.8) !important;
+      opacity: 0.4 !important;
     }
   }
 
-  /* Tablet - Reduced intensity */
+  /* Tablet - Further reduced */
   @media (max-width: 1023px) and (min-width: 769px) {
     .spline-container {
-      opacity: 0.7 !important;
-      filter: brightness(1.1) saturate(1.0) !important;
+      opacity: 0.3 !important;
+      filter: brightness(0.7) saturate(0.7) !important;
     }
   }
 
-  /* Mobile - Minimal for performance */
+  /* Mobile - Very subtle */
   @media (max-width: 768px) {
     .spline-container {
-      opacity: 0.25 !important;
-      filter: brightness(0.9) saturate(0.8) blur(1px) !important;
+      opacity: 0.15 !important;
+      filter: brightness(0.6) saturate(0.6) blur(1px) !important;
       pointer-events: none !important;
     }
   }
 
-  /* Small mobile - Hidden or fallback */
+  /* Small mobile - Nearly invisible */
   @media (max-width: 480px) {
     .spline-container {
-      opacity: 0.1 !important;
-      filter: brightness(0.5) saturate(0.5) blur(2px) !important;
+      opacity: 0.05 !important;
+      filter: brightness(0.4) saturate(0.4) blur(2px) !important;
       pointer-events: none !important;
     }
   }
