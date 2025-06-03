@@ -171,6 +171,20 @@
   .floating-glow:hover::after {
     opacity: 1;
   }
+
+  /* Spline 3D responsive adjustments */
+  @media (max-width: 768px) {
+    .spline-container {
+      transform: scale(0.8);
+      opacity: 0.4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .spline-container {
+      display: none;
+    }
+  }
 }
 
 @layer utilities {

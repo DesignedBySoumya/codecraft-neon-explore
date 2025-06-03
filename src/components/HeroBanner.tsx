@@ -3,15 +3,28 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 const HeroBanner = () => {
   return (
     <div className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-hero-gradient"></div>
+      {/* Spline 3D Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="relative w-full h-full flex items-center justify-center">
+          <Spline
+            scene="https://prod.spline.design/Kw60oEZZK6nIYdUc/scene.splinecode"
+            className="w-full h-full object-cover opacity-60"
+          />
+        </div>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[0.5px]"></div>
+      </div>
+
+      {/* Animated Background Gradient (as fallback/enhancement) */}
+      <div className="absolute inset-0 bg-hero-gradient opacity-50 z-[1]"></div>
       
       {/* Floating Particles */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-[2]">
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
