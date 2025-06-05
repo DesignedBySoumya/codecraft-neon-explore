@@ -12,9 +12,6 @@ const PowerCTA = () => {
         <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">
           Hit the power button
         </h1>
-        <p className="text-lg md:text-xl opacity-90">
-          and unlock a new way of learning to code
-        </p>
       </div>
     </section>
   );
