@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Play } from 'lucide-react';
+import { ChevronRight, Play, Zap, Users, Target } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 
 const HeroBanner = () => {
@@ -68,26 +68,39 @@ const HeroBanner = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 rounded-full px-4 py-2 mb-8"
+            className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 rounded-full px-6 py-3 mb-8 backdrop-blur-sm"
           >
             <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
             <span className="text-neon-green text-sm font-medium">Join 50K+ Active Coders</span>
+            <Zap className="w-4 h-4 text-neon-green animate-pulse" />
           </motion.div>
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-orbitron font-black mb-6 leading-tight">
-            <span className="hero-text block">MASTER</span>
-            <span className="hero-text block bg-gradient-to-r from-neon-green via-neon-blue to-neon-green bg-clip-text text-transparent">
+            <motion.span 
+              className="hero-text block"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              MASTER
+            </motion.span>
+            <motion.span 
+              className="hero-text block bg-gradient-to-r from-neon-green via-neon-blue to-neon-green bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
               ALGORITHMS
-            </span>
+            </motion.span>
           </h1>
 
-          {/* Subtitle */}
+          {/* Enhanced Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
           >
             Dive into the <span className="text-neon-green font-semibold">neon-powered</span> coding universe. 
             Solve challenges, level up your skills, and join the elite.
@@ -101,7 +114,7 @@ const HeroBanner = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
             <Button 
-              className="btn-primary text-lg px-8 py-4 group relative overflow-hidden"
+              className="btn-primary text-lg px-8 py-4 group relative overflow-hidden shadow-neon hover:shadow-neon-strong"
               size="lg"
             >
               <motion.div
@@ -118,7 +131,7 @@ const HeroBanner = () => {
 
             <Button 
               variant="outline"
-              className="text-lg px-8 py-4 border-neon-green/30 hover:bg-neon-green/10 group"
+              className="text-lg px-8 py-4 border-neon-green/30 hover:bg-neon-green/10 group backdrop-blur-sm"
               size="lg"
             >
               <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -126,7 +139,7 @@ const HeroBanner = () => {
             </Button>
           </motion.div>
 
-          {/* Enhanced Stats */}
+          {/* Enhanced Stats with improved visual hierarchy */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,22 +147,24 @@ const HeroBanner = () => {
             className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
           >
             {[
-              { label: "Active Coders", value: "50K+", icon: "👨‍💻" },
-              { label: "Challenges", value: "2.5K+", icon: "🎯" },
-              { label: "Success Rate", value: "94%", icon: "🚀" }
+              { label: "Active Coders", value: "50K+", icon: Users, color: "neon-green" },
+              { label: "Challenges", value: "2.5K+", icon: Target, color: "neon-blue" },
+              { label: "Success Rate", value: "94%", icon: Zap, color: "accent" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                className="glass-card p-6 rounded-xl text-center group hover:scale-105 transition-transform duration-300"
+                className="glass-card p-6 rounded-xl text-center group hover:scale-105 transition-all duration-300 backdrop-blur-lg border border-white/10"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                  {stat.icon}
+                <div className="flex justify-center mb-3">
+                  <div className={`p-3 rounded-full bg-${stat.color}/20 border border-${stat.color}/30`}>
+                    <stat.icon className={`w-6 h-6 text-${stat.color}`} />
+                  </div>
                 </div>
-                <div className="text-2xl md:text-3xl font-orbitron font-bold text-neon-green mb-1">
+                <div className={`text-2xl md:text-3xl font-orbitron font-bold text-${stat.color} mb-1`}>
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground font-medium">
@@ -171,7 +186,7 @@ const HeroBanner = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-neon-green/50 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-neon-green/50 rounded-full flex justify-center backdrop-blur-sm"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
