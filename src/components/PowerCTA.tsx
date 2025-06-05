@@ -9,9 +9,7 @@ const PowerCTA = () => {
         <Spline scene="https://prod.spline.design/ub4hfBbpneSau4jJ/scene.splinecode" />
       </div>
       <div className="relative z-10 text-center px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-md">
-          Hit the power button
-        </h1>
+        {/* Heading removed as requested */}
       </div>
     </section>
   );
