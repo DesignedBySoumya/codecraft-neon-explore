@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroBanner from '../components/HeroBanner';
@@ -17,6 +16,10 @@ import CodePreviewPanel from '../components/CodePreviewPanel';
 import FloatingChallengeCard from '../components/FloatingChallengeCard';
 import AnimatedTabs from '../components/AnimatedTabs';
 import CodeRainBackground from '../components/CodeRainBackground';
+import TestimonialsSection from '../components/TestimonialsSection';
+import CommunityCtaBlock from '../components/CommunityCtaBlock';
+import StillNotSureBlock from '../components/StillNotSureBlock';
+import Footer from '../components/Footer';
 
 const Index = () => {
   const [isCodePanelOpen, setIsCodePanelOpen] = useState(false);
@@ -193,6 +196,16 @@ const Index = () => {
             <WeeklyPick />
           </motion.section>
 
+          {/* Testimonials Section */}
+          <motion.section
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            <TestimonialsSection />
+          </motion.section>
+
           {/* Live Feed & Leaderboard */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <motion.section
@@ -219,6 +232,26 @@ const Index = () => {
               <Leaderboard />
             </motion.section>
           </div>
+
+          {/* Still Not Sure Block */}
+          <motion.section
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            <StillNotSureBlock />
+          </motion.section>
+
+          {/* Community CTA Block */}
+          <motion.section
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+          >
+            <CommunityCtaBlock />
+          </motion.section>
         </div>
 
         {/* VS Code-like Code Preview Panel */}
@@ -226,6 +259,9 @@ const Index = () => {
           isOpen={isCodePanelOpen}
           onClose={() => setIsCodePanelOpen(false)}
         />
+
+        {/* Footer */}
+        <Footer />
       </motion.div>
     </>
   );
