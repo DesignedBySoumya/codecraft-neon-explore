@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import HeroBanner from '../components/HeroBanner';
@@ -19,6 +20,7 @@ import CodeRainBackground from '../components/CodeRainBackground';
 import TestimonialsSection from '../components/TestimonialsSection';
 import CommunityCtaBlock from '../components/CommunityCtaBlock';
 import StillNotSureBlock from '../components/StillNotSureBlock';
+import PowerCTA from '../components/PowerCTA';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -253,6 +255,9 @@ const Index = () => {
             <CommunityCtaBlock />
           </motion.section>
         </div>
+
+        {/* Full-screen PowerCTA Section */}
+        <PowerCTA />
 
         {/* VS Code-like Code Preview Panel */}
         <CodePreviewPanel
