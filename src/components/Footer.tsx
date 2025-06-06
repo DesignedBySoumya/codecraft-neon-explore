@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Twitter, Mail, Code, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const quickLinks = [
@@ -13,8 +14,8 @@ const Footer = () => {
   ];
 
   const supportLinks = [
-    { label: 'Terms & Privacy', href: '#' },
-    { label: 'Contact Us', href: '#' },
+    { label: 'Terms & Privacy', href: '/terms-privacy' },
+    { label: 'Contact Us', href: '/contact' },
     { label: 'Help Center', href: '#' },
     { label: 'API Docs', href: '#' }
   ];
@@ -86,13 +87,23 @@ const Footer = () => {
             <ul className="space-y-2">
               {supportLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-neon-green transition-colors duration-200 relative inline-block group"
-                  >
-                    {link.label}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-green transition-all duration-200 group-hover:w-full"></span>
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      to={link.href}
+                      className="text-muted-foreground hover:text-neon-green transition-colors duration-200 relative inline-block group"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-green transition-all duration-200 group-hover:w-full"></span>
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground hover:text-neon-green transition-colors duration-200 relative inline-block group"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-green transition-all duration-200 group-hover:w-full"></span>
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
